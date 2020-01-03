@@ -96,10 +96,10 @@
     <script src="./js/jquery.twentytwenty.js"></script>
     <script>
     $(window).load(function(){
+      $(".site-content").fadeIn();
+      $(".se-pre-con").fadeOut();
       $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
       $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
-      $(".site-content").show();
-      $(".se-pre-con").fadeOut();
     });
     </script>
   </body>
