@@ -16,7 +16,7 @@
   <body>
 
 <div class="se-pre-con"></div>
-     
+     <div class="site-content">
  <div class="row" style="margin-top: 2em;">
       <div class="large-12 columns">
         <h3>Photo Fixing and Restoration</h3>
@@ -88,7 +88,7 @@
         <h3>Thank You</h3>
        <a href="https://web.facebook.com/kamiy2j">Kamran Shahid</a>
       </div>
-</div>
+</div></div>
 <br/></br>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
@@ -98,7 +98,8 @@
     $(window).load(function(){
       $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
       $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
-      $(".se-pre-con").fadeOut("slow");;
+      $(".site-content").show();
+      $(".se-pre-con").fadeOut();
     });
     </script>
   </body>
