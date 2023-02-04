@@ -1,2 +1,2 @@
-# photorestoration
-This is my photo restoration portfolio
+# portfolio
+This is my portfolio
