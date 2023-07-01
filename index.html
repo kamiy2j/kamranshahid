@@ -1,82 +1,114 @@
 <!DOCTYPE html>
 <html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+            margin: 0;
+            min-width: 250px;
+            }
 
-<head>
-  <meta charset="UTF-8">
-  <title>Kamran Shahid - Android Developer</title>
-  <style>
-    body {
-      font-family: "Helvetica Neue", sans-serif;
-      background-color: #F5F5F5;
-    }
+            /* Include the padding and border in an element's total width and height */
+            * {
+            box-sizing: border-box;
+            }
 
-    .header {
-      text-align: center;
-      padding: 40px;
-    }
+            /* Remove margins and padding from the list */
+            ul {
+            margin: 0;
+            padding: 0;
+            }
 
-    .header h1 {
-      font-size: 36px;
-      color: #333;
-      font-weight: bold;
-    }
+            /* Style the list items */
+            ul li {
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            list-style-type: none;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+            
+            /* make the list items unselectable */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            }
 
-    .header p {
-      font-size: 18px;
-      color: #333;
-      margin-top: 10px;
-    }
+            /* Set all odd list items to a different color (zebra-stripes) */
+            ul li:nth-child(odd) {
+            background: #f9f9f9;
+            }
 
-    .content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px;
-      background-color: #fff;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    }
+            /* Darker background-color on hover */
+            ul li:hover {
+            background: #ddd;
+            }
 
-    .content h2 {
-      font-size: 24px;
-      color: #333;
-      margin-bottom: 20px;
-    }
+            /* When clicked on, add a background color and strike out text */
+            ul li.checked {
+            background: #888;
+            color: #fff;
+            text-decoration: line-through;
+            }
 
-    .content p {
-      font-size: 18px;
-      color: #333;
-      margin-bottom: 20px;
-    }
+            /* Add a "checked" mark when clicked on */
+            ul li.checked::before {
+            content: '';
+            position: absolute;
+            border-color: #fff;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            top: 10px;
+            left: 16px;
+            transform: rotate(45deg);
+            height: 15px;
+            width: 7px;
+            }
 
-    .content a {
-      color: #337ab7;
-      text-decoration: none;
-    }
+            .header {
+            background-color: #f44336;
+            padding: 30px 40px;
+            color: white;
+            text-align: center;
+            font-size:30px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="myDIV" class="header">
+        </div>
+        <ul id="myUL">
+        </ul>
 
-    .footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #999;
-    }
-  </style>
-</head>
+        <script>
+            // call the function to start execution
+            get();
 
-<body>
-  <div class="header">
-    <h1>Kamran Shahid</h1>
-    <p>Android Developer with 6+ years of experience</p>
-  </div>
-  <div class="content">
-    <h2>About Me</h2>
-    <p>I am an experienced Android developer with 6 years of working experience in both small and large scale
-      applications. I have developed more than 10 apps and am currently working on a project with 1 million+ downloads
-      and a 4.5+ Play Store rating.</p>
-    <h2>Portfolio</h2>
-    <p>This is my portfolio website and it is currently under construction. Thank you for visiting.</p>
-  </div>
-  <div class="footer">
-    <p>Connect with me on <a href="https://www.linkedin.com/in/kamranisonline/">LinkedIn</a></p>
-  </div>
-</body>
+            // function that call the API to get the JSON data
+            async function get() {
+                var r = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@kamiy2j');
+                var data = await r.json();
+                
+                // display your title in header
+                document.getElementById("myDIV").textContent = data['feed']['title'];
 
+                // iterate the array of items and call the newElement function which add the new list item
+                for(var i=0; i<data['items'].length; i++)
+                {
+                    newElement(data['items'][i]['title']);
+                }
+            }
+
+            // Create a new list item when clicking on the "Add" button
+            function newElement(textContent) {
+                var li = document.createElement("li");
+                var t = document.createTextNode(textContent);
+                li.appendChild(t);
+                document.getElementById("myUL").appendChild(li);
+            }
+        </script>
+    </body>
 </html>
