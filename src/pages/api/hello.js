@@ -6,7 +6,7 @@ import { AiFillLinkedin, AiFillMediumCircle, AiOutlineTwitter } from "react-icon
 //   res.status(200).json({ name: 'John Doe' })
 // }
 
-const mediumURL = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@kamiy2j"
+const mediumURL = "https://api.rss2json.com/v1/api.json?rss_url=https://kamiy2j.medium.com/feed"
 
 const homeSeo = {
   title: "Kamran Shahid",
