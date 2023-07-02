@@ -1,15 +1,12 @@
 {
   "name": "medium-blog-feed",
-  "homepage": "https://kamiy2j.github.io/src/pages/index.js"
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "lint": "next lint"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",
